@@ -1,0 +1,106 @@
+// yamlファイルに追加するライブラリ
+dependencies:
+  sqflite: any
+  path: any
+
+
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
+
+class DatabaseHelper {
+  static final _databaseName = "FoodDatabase.db";
+  static final _databaseVersion = 1;
+
+  // Singleton instance
+  DatabaseHelper._privateConstructor();
+  static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
+
+  // Database reference
+  static Database? _database;
+  Future<Database> get database async {
+    if (_database != null) return _database!;
+    _database = await _initDatabase();
+    return _database!;
+  }
+
+  // Initialize the database
+  Future<Database> _initDatabase() async {
+    String path = join(await getDatabasesPath(), _databaseName);
+    return await openDatabase(path,
+        version: _databaseVersion, onCreate: _onCreate);
+  }
+
+  // Create tables
+  Future _onCreate(Database db, int version) async {
+    await db.execute('''
+      CREATE TABLE food (
+        food_id INTEGER PRIMARY KEY,
+        food_name TEXT,
+        food_img TEXT,
+        kcal REAL,
+        protein REAL,
+        lipids REAL,
+        carbo REAL,
+        salt REAL,
+        amount REAL,
+        unit TEXT
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE ingredient (
+        ingredient_id INTEGER PRIMARY KEY,
+        ingredient_name TEXT,
+        ingredient_img TEXT,
+        kcal REAL,
+        protein REAL,
+        lipids REAL,
+        carbo REAL,
+        salt REAL,
+        amount REAL,
+        unit TEXT
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE nutrition_food (
+        created_nutrition TEXT,
+        food_id INTEGER,
+        food_ratio REAL,
+        PRIMARY KEY (created_nutrition, food_id),
+        FOREIGN KEY (food_id) REFERENCES food (food_id)
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE nutrition_ingredient (
+        created_nutrition TEXT,
+        ingredient_id INTEGER,
+        ingredient_ratio REAL,
+        PRIMARY KEY (created_nutrition, ingredient_id),
+        FOREIGN KEY (ingredient_id) REFERENCES ingredient (ingredient_id)
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE food_ingredient (
+        food_id INTEGER,
+        ingredient_id INTEGER,
+        ingredient_ratio REAL,
+        PRIMARY KEY (food_id, ingredient_id),
+        FOREIGN KEY (food_id) REFERENCES food (food_id),
+        FOREIGN KEY (ingredient_id) REFERENCES ingredient (ingredient_id)
+      )
+    ''');
+
+    await db.execute('''
+      CREATE TABLE user (
+        user_id INTEGER PRIMARY KEY,
+        height REAL,
+        weight REAL,
+        age INTEGER,
+        gender TEXT
+      )
+    ''');
+  }
+}

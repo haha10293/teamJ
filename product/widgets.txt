@@ -1,0 +1,3 @@
+Row, Column:
+Expandedは上記widgets内の子要素の幅を埋める際に使用する。
+FlexはExpandedが複数含まれる場合、その幅の割合を決めるときに使用する。

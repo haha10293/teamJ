@@ -1,0 +1,44 @@
+食品テーブル：
+食品id：food_id（primary key）
+食品名：food_name
+食品画像food_img
+カロリー：kcal
+タンパク質protein
+脂質：lipids
+炭水化物：carbo
+食塩：salt
+分量：amount
+単位：unit
+
+食材テーブル：
+食材id：ingredient_id（primary key）
+食材名：ingredient_name
+食材画像ingredient_img
+カロリー：kcal
+タンパク質protein
+脂質：lipids
+炭水化物：carbo
+食塩：salt
+分量：amount
+単位：unit
+
+nutrition_food_table：
+複合主キー：created_nutrition: DateTime,food_id
+food_ratio: double
+
+nutrition_ingredient_table：
+複合主キー：created_nutrition: DateTime, ingredient_id
+ingredient_ratio: double
+
+
+food_ingredient:
+複合主キー： food_id, ingredient_id
+ingredient_ratio: double
+
+
+user_table：
+user_id(primary key)
+Height: double
+Weight: double
+Age: int
+Gender: String

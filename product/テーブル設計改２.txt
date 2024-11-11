@@ -1,0 +1,50 @@
+food_table：
+food_id（primary key）: auto number
+food_name: String
+food_img: String
+kcal: int
+protein: int
+lipids: int
+carbo: int
+salt: int
+amount: int
+unit: String
+
+食材テーブル：
+ingredient_id（primary key）: auto number
+ingredient_name: String
+ingredient_img: String
+kcal: int
+protein: int
+lipids: int
+carbo: int
+salt: int
+amount: int
+unit: String
+
+栄養表(食品)テーブル：
+複合主キー：
+ 栄養表作成日時id：created_nutrition 
+ 食品id：food_id
+食品の割合：food_ratio
+
+栄養表(食材)テーブル：
+複合主キー：
+ 栄養表作成日時id：created_nutrition 
+ 食材id：ingredient_id
+ 食材の割合：ingredient_ratio
+
+
+自炊の食材テーブル:
+複合主キー：
+    食品id：food_id
+    食材id：ingredient_id
+食材の割合: ingredient_ratio
+
+
+ユーザー：
+user_id(primary key)
+身長：Height   
+体重：Weight
+年齢：Age
+性別：Gender

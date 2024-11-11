@@ -1,0 +1,50 @@
+食品テーブル：
+primary key：
+    food_id
+食品名：food_name
+食品画像food_img
+カロリー：kcal
+タンパク質protein
+脂質：lipids
+炭水化物：carbo
+食塩：salt
+分量(グラム,ml)
+
+栄養表に登録されている食品のテーブル：
+複合キー：
+ 栄養表作成日時id：created_nutrition 
+ 食品テーブルid：food_id
+食品の割合：food_ratio
+体重
+
+ユーザー：
+primarykey:
+    user_id
+身長：Height   
+体重：Weight
+年齢：Age
+性別：Gender
+
+自炊食品テーブル：
+自炊食品id
+自炊食品名：food_name
+自炊食品画像food_img
+カロリー：kcal
+タンパク質protein
+脂質：lipids
+炭水化物：carbo
+食塩：salt
+分量（グラム, ml）
+
+
+複合テーブル：
+自炊食品id：
+食品テーブルid：food_id
+自炊食品割合：
+
+商品名
+イメージ画像
+割合
+分量
+各栄養素
+

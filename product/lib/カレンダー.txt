@@ -1,0 +1,53 @@
+// カレンダー
+        TableCalendar(
+          // 日本語化
+          locale: 'ja_JP',
+          // 開始日
+          firstDay: DateTime.utc(2000, 1, 1),
+          // 終了日
+          lastDay: DateTime.utc(2030, 12, 31),
+          // 選択中の日付
+          focusedDay: _focusedDay,
+          // 選択中のフォーマット
+          calendarFormat: _calendarFormat,
+          // 
+          // daysOfWeekVisible: false,
+          // weekNumbersVisible: false,
+          // headerVisible: false,
+          // フォーマット変更ハンドラ
+          onFormatChanged: (format) => setState(() {
+            _calendarFormat = format;
+          }),
+          selectedDayPredicate:(day) {
+            return isSameDay(_selectedDay, day);
+          },
+          onDaySelected: (selectedDay, focusedDay) {
+            if (!isSameDay(_selectedDay, selectedDay)) {
+              setState(() {
+                _selectedDay = selectedDay;
+                _focusedDay = focusedDay;
+              });
+            }
+          },
+          onPageChanged: (focusedDay) {
+            _focusedDay = focusedDay;
+          },
+          calendarBuilders: CalendarBuilders(
+            headerTitleBuilder: (context, day) {
+              // ここでカスタムヘッダータイトルを構築
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '${day.year}年${day.month}月${day.day}日${day.toLocal()}',
+                    style: TextStyle(
+                      fontSize: 17.0,
+                    ),
+                  ),
+                  const SizedBox(width: 8.0),
+                  Icon(Icons.list),
+                ],
+              );
+            },
+          ),
+        ),
