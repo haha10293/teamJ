@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 // 食品
@@ -27,18 +28,18 @@ class Add_FoodState extends State<Add_Food> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-              // ここ
               padding: EdgeInsets.only(top: t.toDouble(), right: r.toDouble(), bottom: b.toDouble(), left: l.toDouble()),
               child: SizedBox(
                   
               width: deviceWidth-50,
               child: TextField(
-                  keyboardType: TextInputType.number, // キーボードの種類を指定
+                    keyboardType: TextInputType.number, // キーボードの種類を指定
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,}$'))], //入力制限 先頭に１つ以上の数字かつ少数点は0か1回許可かつ少数点の後に0回以上の数字
                   onChanged: (String value) {
-                    setState(() {
-                      // _BookName = value;
-                    });
-                  },
+                            setState(() {
+                              // _BookName = value;
+                            });
+                          },
                   // フォームの装飾
                   decoration: InputDecoration(
                     labelText: label,
@@ -70,7 +71,34 @@ class Add_FoodState extends State<Add_Food> {
           // 子要素
           children: [
             // 食品名
-            textForm(1, 15, 1, 10, "食品名", "食品名を入力してください", "", deviceWidth),
+              Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 1, right: 15, bottom: 1, left: 10),
+                  child: 
+                  SizedBox(
+                    width: deviceWidth-50,
+                    child: 
+                    TextField(
+                    keyboardType: TextInputType.text, // キーボードの種類を指定
+                    onChanged: (String value) {
+                              setState(() {
+                                // _BookName = value;
+                              });
+                            },
+                    // フォームの装飾
+                    decoration: InputDecoration(
+                      labelText: "食品名",
+                      hintText: "食品名を入力してください",
+                      hintStyle: const TextStyle(color: Colors.grey, fontWeight: FontWeight.w300),
+                      fillColor: Colors.yellow[50],
+                      filled: true, //これ入れないとfillColorが表示されない
+                    ),
+                  ),
+                ),
+              ),
+          ],),
             //-- 画像入力部分 --//
             // カード
             Card(
@@ -158,6 +186,7 @@ class Add_FoodState extends State<Add_Food> {
                   width: deviceWidth-175,
                   child: TextField(
                     keyboardType: TextInputType.number, // キーボードの種類を指定
+                    inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,}$'))], //入力制限 先頭に１つ以上の数字かつ少数点は0か1回許可かつ少数点の後に0回以上の数字
                     onChanged: (String value) {
                       setState(() {
                         // _BookName = value;

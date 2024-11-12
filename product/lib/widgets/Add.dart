@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 // 自作widget
 import 'package:product/widgets/Add_Food.dart';
 import 'package:product/widgets/Add_Ingredients.dart';
+import 'package:product/widgets/Add_Self_Food.dart';
 
 // 追加画面
 class Add extends StatefulWidget {
@@ -16,6 +17,8 @@ class AddState extends State<Add> {
   // 各追加画面インスタンス化
   static const add_food = Add_Food();
   static const add_ingredients = Add_Ingredients();
+  // 変える
+  static const add_self_food = Add_Self_Food();
    // ドロップダウンリストのアイテム
   final List<String> items = ['g', 'ml', 'cc', '個', '袋'];
   // クラスメンバとして初期化
@@ -33,7 +36,7 @@ class AddState extends State<Add> {
             child: SizedBox(
               width: deviceWidth-50,
               child: TextField(
-                keyboardType: TextInputType.number, // キーボードの種類を指定
+                keyboardType: TextInputType.text, // キーボードの種類を指定
                 onChanged: (String value) {
                   setState(() {
                   // _BookName = value;
@@ -82,7 +85,7 @@ class AddState extends State<Add> {
                   // 食材追加画面
                   add_ingredients,
                   // 自炊追加画面
-                  Center(child: Text("View 3")),
+                  add_self_food,
                 ],
               ),
             ),
