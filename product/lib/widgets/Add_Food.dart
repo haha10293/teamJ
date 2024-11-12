@@ -33,12 +33,12 @@ class Add_FoodState extends State<Add_Food> {
                   
               width: deviceWidth-50,
               child: TextField(
-                  keyboardType: TextInputType.number, // キーボードの種類を指定
+                  keyboardType: TextInputType.text, // キーボードの種類を指定
                   onChanged: (String value) {
-                    setState(() {
-                      // _BookName = value;
-                    });
-                  },
+                            setState(() {
+                              // _BookName = value;
+                            });
+                          },
                   // フォームの装飾
                   decoration: InputDecoration(
                     labelText: label,

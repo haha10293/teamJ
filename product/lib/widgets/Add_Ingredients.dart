@@ -33,7 +33,7 @@ class Add_IngredientsState extends State<Add_Ingredients> {
                   
               width: deviceWidth-50,
               child: TextField(
-                  keyboardType: TextInputType.number, // キーボードの種類を指定
+                  keyboardType: TextInputType.text, // キーボードの種類を指定
                   onChanged: (String value) {
                             setState(() {
                               // _BookName = value;
