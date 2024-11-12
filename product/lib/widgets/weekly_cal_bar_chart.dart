@@ -40,13 +40,13 @@ class _WeeklyCalBarChart extends State<WeeklyCalBarChart> {
 
   // 日付と対応するカロリーデータ
   List<BarData> datas = [
-    BarData(2024, 10, 28, 1800, 57,  69, 268),
-    BarData(2024, 10, 29, 2100, 120, 53, 300),
-    BarData(2024, 10, 30, 2000, 115, 60, 290),
-    BarData(2024, 10, 31, 2600, 90,  55, 300),
-    BarData(2024, 11, 1,  1800, 100, 50, 300),
-    BarData(2024, 11, 2,  2100, 70,  65, 250),
-    BarData(2024, 11, 3,  1200, 100, 50, 300),
+    BarData(DateTime(2024, 10, 28), 1800, 57,  69, 268),
+    BarData(DateTime(2024, 10, 29), 2100, 120, 53, 300),
+    BarData(DateTime(2024, 10, 30), 2000, 115, 60, 290),
+    BarData(DateTime(2024, 10, 31), 2600, 90,  55, 300),
+    BarData(DateTime(2024, 11, 1),  1800, 100, 50, 300),
+    BarData(DateTime(2024, 11, 2),  2100, 70,  65, 250),
+    BarData(DateTime(2024, 11, 3),  1200, 100, 50, 300),
   ];
 
   @override
@@ -194,7 +194,7 @@ class _WeeklyCalBarChart extends State<WeeklyCalBarChart> {
           ),
           // 一週間の平均
           Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: SizedBox(
               width: screenWidth * 0.95,
               height: screenWidth * 0.95 * 0.6,
@@ -234,34 +234,26 @@ class _WeeklyCalBarChart extends State<WeeklyCalBarChart> {
 }
 
 class BarData {
-  final int year;
-  final int month;
-  final int day;
+  final DateTime date;
   final int calorie;
   final int protein;
   final int fat;
   final int carbonhydrate;
 
   BarData(
-    this.year,
-    this.month,
-    this.day,
+    this.date,
     this.calorie,
     this.protein,
     this.fat,
     this.carbonhydrate
   );
 
-  DateTime getDateTime() {
-    return DateTime(year, month, day);
-  }
-
   String getFormattedDate() {
-    return DateFormat('M/d').format(getDateTime());
+    return DateFormat('M/d').format(date);
   }
 
   String getDayString() {
-    return DateFormat('d').format(getDateTime());
+    return DateFormat('d').format(date);
   }
 
   List<int> getPFCInt() {

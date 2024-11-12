@@ -40,34 +40,34 @@ class _MonthlyCalBarChart extends State<MonthlyCalBarChart> {
 
   // 日付と対応するカロリーデータ
   List<BarData> datas = [
-    BarData(2024, 10, 28, 1800, 57,  69, 268),
-    BarData(2024, 10, 29, 2100, 120, 53, 300),
-    BarData(2024, 10, 30, 2000, 115, 60, 290),
-    BarData(2024, 10, 31, 2600, 90,  55, 300),
-    BarData(2024, 11, 1,  1800, 100, 50, 300),
-    BarData(2024, 11, 2,  2100, 70,  65, 250),
-    BarData(2024, 11, 3,  1200, 100, 50, 300),
-    BarData(2024, 11, 4,  1800, 57,  69, 268),
-    BarData(2024, 11, 5,  2100, 120, 53, 300),
-    BarData(2024, 11, 6,  2000, 115, 60, 290),
-    BarData(2024, 11, 7,  2600, 90,  55, 300),
-    BarData(2024, 11, 8,  1800, 100, 50, 300),
-    BarData(2024, 11, 9,  2100, 70,  65, 250),
-    BarData(2024, 11, 10, 1200, 100, 50, 300),
-    BarData(2024, 11, 11, 1800, 57,  69, 268),
-    BarData(2024, 11, 12, 2100, 120, 53, 300),
-    BarData(2024, 11, 13, 2000, 115, 60, 290),
-    BarData(2024, 11, 14, 2600, 90,  55, 300),
-    BarData(2024, 11, 15, 1800, 100, 50, 300),
-    BarData(2024, 11, 16, 2100, 70,  65, 250),
-    BarData(2024, 11, 17, 1200, 100, 50, 300),
-    BarData(2024, 11, 18, 1800, 57,  69, 268),
-    BarData(2024, 11, 19, 2100, 120, 53, 300),
-    BarData(2024, 11, 20, 2000, 115, 60, 290),
-    BarData(2024, 11, 21, 2600, 90,  55, 300),
-    BarData(2024, 11, 22, 1800, 100, 50, 300),
-    BarData(2024, 11, 23, 2100, 70,  65, 250),
-    BarData(2024, 11, 24, 1200, 100, 50, 300),
+    BarData(DateTime(2024, 10, 28), 1800, 57,  69, 268),
+    BarData(DateTime(2024, 10, 29), 2100, 120, 53, 300),
+    BarData(DateTime(2024, 10, 30), 2000, 115, 60, 290),
+    BarData(DateTime(2024, 10, 31), 2600, 90,  55, 300),
+    BarData(DateTime(2024, 11, 1),  1800, 100, 50, 300),
+    BarData(DateTime(2024, 11, 2),  2100, 70,  65, 250),
+    BarData(DateTime(2024, 11, 3),  1200, 100, 50, 300),
+    BarData(DateTime(2024, 11, 4),  1800, 57,  69, 268),
+    BarData(DateTime(2024, 11, 5),  2100, 120, 53, 300),
+    BarData(DateTime(2024, 11, 6),  2000, 115, 60, 290),
+    BarData(DateTime(2024, 11, 7),  2600, 90,  55, 300),
+    BarData(DateTime(2024, 11, 8),  1800, 100, 50, 300),
+    BarData(DateTime(2024, 11, 9),  2100, 70,  65, 250),
+    BarData(DateTime(2024, 11, 10), 1200, 100, 50, 300),
+    BarData(DateTime(2024, 11, 11), 1800, 57,  69, 268),
+    BarData(DateTime(2024, 11, 12), 2100, 120, 53, 300),
+    BarData(DateTime(2024, 11, 13), 2000, 115, 60, 290),
+    BarData(DateTime(2024, 11, 14), 2600, 90,  55, 300),
+    BarData(DateTime(2024, 11, 15), 1800, 100, 50, 300),
+    BarData(DateTime(2024, 11, 16), 2100, 70,  65, 250),
+    BarData(DateTime(2024, 11, 17), 1200, 100, 50, 300),
+    BarData(DateTime(2024, 11, 18), 1800, 57,  69, 268),
+    BarData(DateTime(2024, 11, 19), 2100, 120, 53, 300),
+    BarData(DateTime(2024, 11, 20), 2000, 115, 60, 290),
+    BarData(DateTime(2024, 11, 21), 2600, 90,  55, 300),
+    BarData(DateTime(2024, 11, 22), 1800, 100, 50, 300),
+    BarData(DateTime(2024, 11, 23), 2100, 70,  65, 250),
+    BarData(DateTime(2024, 11, 24), 1200, 100, 50, 300),
   ];
 
   @override
@@ -258,34 +258,26 @@ class _MonthlyCalBarChart extends State<MonthlyCalBarChart> {
 }
 
 class BarData {
-  final int year;
-  final int month;
-  final int day;
+  final DateTime date;
   final int calorie;
   final int protein;
   final int fat;
   final int carbonhydrate;
 
   BarData(
-    this.year,
-    this.month,
-    this.day,
+    this.date,
     this.calorie,
     this.protein,
     this.fat,
     this.carbonhydrate
   );
 
-  DateTime getDateTime() {
-    return DateTime(year, month, day);
-  }
-
   String getFormattedDate() {
-    return DateFormat('M/d').format(getDateTime());
+    return DateFormat('M/d').format(date);
   }
 
   String getDayString() {
-    return DateFormat('d').format(getDateTime());
+    return DateFormat('d').format(date);
   }
 
   List<int> getPFCInt() {
