@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 // 自作widgets
 import 'package:product/widgets/Record.dart';
-import 'package:product/widgets/FoodDetails.dart';
+import 'package:product/widgets/food_details.dart';
 
 class Nutrition extends StatefulWidget {
   const Nutrition({super.key});

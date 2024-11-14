@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 // 自作widget
-import 'package:product/widgets/Add_Food.dart';
-import 'package:product/widgets/Add_Ingredients.dart';
+import 'package:product/widgets/add_food.dart';
+import 'package:product/widgets/add_ingredients.dart';
 
 // 追加画面
 class Add extends StatefulWidget {
