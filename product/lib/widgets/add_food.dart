@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 // 食品
-class Add_Food extends StatefulWidget {
-  const Add_Food({super.key});
+class AddFood extends StatefulWidget {
+  const AddFood({super.key});
 
   @override
-  Add_FoodState createState() => Add_FoodState();
+  AddFoodState createState() => AddFoodState();
 }
 
-class Add_FoodState extends State<Add_Food> {
+class AddFoodState extends State<AddFood> {
   static const TextStyle optionStyle = TextStyle(fontSize: 25, fontWeight: FontWeight.bold);
   double _progress = 0;
   List<int> rgbo = [63, 81, 181];
