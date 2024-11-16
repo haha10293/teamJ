@@ -1,0 +1,30 @@
+管理者テーブル：
+管理者：admin_user
+パスコード：pass_code
+
+
+ユーザーテーブル：
+UID：uid
+名前：user_name
+身長：Height   
+体重：Weight
+年齢：Age
+性別：Gender
+
+栄養表テーブル：
+栄養表作成日時（primary key）：created_nutrition
+
+//合計値
+total_kcal: int
+total_protein: int
+total_lipids: int
+total_carbo: int
+total_salt: int
+
+//目標値
+target_kcal: int
+target_protein: int
+target_lipids: int
+target_carbo: int
+target_salt: int
+

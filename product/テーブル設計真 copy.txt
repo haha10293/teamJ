@@ -1,0 +1,86 @@
+食品テーブル
+food_table：
+food_id（primary key）: auto number
+food_name: String
+food_img: String
+kcal: int
+protein: int
+lipids: int
+carbo: int
+salt: int
+amount: int
+unit: String
+
+食材テーブル：
+ingredient_id（primary key）: auto number
+ingredient_name: String
+ingredient_img: String
+kcal: int
+protein: int
+lipids: int
+carbo: int
+salt: int
+amount: int
+unit: String
+
+栄養表(食品)テーブル：
+複合主キー：
+ 栄養表作成日時id：created_nutrition 
+ 食品id：food_id
+食品の割合：food_ratio
+
+栄養表(食材)テーブル：
+複合主キー：
+ 栄養表作成日時id：created_nutrition 
+ 食材id：ingredient_id
+ 食材の割合：ingredient_ratio
+
+栄養表（メイン）テーブル
+　栄養表作成日時（primary key）: created_nutrition
+    //目標値
+    target_kcal: int
+    target_protein: int
+    target_lipids: int
+    target_carbo: int
+    target_salt: int
+    //合計値
+    total_kcal: int
+    total_protein: int
+    total_lipids: int
+    total_carbo: int
+    total_salt: int
+    total_amount: int
+    unit: String
+
+自炊の食材テーブル:
+複合主キー：
+    食品id：food_id
+    食材id：ingredient_id
+食材の割合: ingredient_ratio
+
+
+ユーザー：
+user_id(primary key)
+身長：Height   
+体重：Weight
+年齢：Age
+性別：Gender
+名前：User_name
+目標エネルギ―：
+身体活動レベル：
+UID：uid
+
+基礎代謝量（計算式）：
+男性: 13.397 × 体重kg + 4.799 x 身長cm - 5.677 × 年齢 + 88.362
+女性: 9.247 × 体重kg + 3.098 x 身長cm - 4.33 × 年齢 + 447.593
+
+運動係数：
+ほぼ運動しない
+1.5
+中程度の運動
+1.75
+激しい運動
+1.9
+
+一日に必要な総エネルギー：
+基礎代謝量 X 運動係数
