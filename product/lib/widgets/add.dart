@@ -14,8 +14,8 @@ class Add extends StatefulWidget {
 
 class AddState extends State<Add> {
   // 各追加画面インスタンス化
-  static const add_food = Add_Food();
-  static const add_ingredients = Add_Ingredients();
+  static const add_food = AddFood();
+  static const add_ingredients = AddIngredients();
    // ドロップダウンリストのアイテム
   final List<String> items = ['g', 'ml', 'cc', '個', '袋'];
   // クラスメンバとして初期化
