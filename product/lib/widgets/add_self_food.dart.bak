@@ -4,14 +4,14 @@ import 'package:flutter/widgets.dart';
 import 'package:product/widgets/record.dart';
 
 // 食材
-class AddSelfFood extends StatefulWidget {
-  const AddSelfFood({super.key});
+class Add_Self_Food extends StatefulWidget {
+  const Add_Self_Food({super.key});
 
   @override
-  AddSelfFoodState createState() => AddSelfFoodState();
+  Add_Self_FoodState createState() => Add_Self_FoodState();
 }
 
-class AddSelfFoodState extends State<AddSelfFood> {
+class Add_Self_FoodState extends State<Add_Self_Food> {
   static const TextStyle optionStyle = TextStyle(fontSize: 25, fontWeight: FontWeight.bold);
   double _progress = 0;
   List<int> rgbo = [63, 81, 181];

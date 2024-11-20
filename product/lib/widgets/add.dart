@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 // 自作widget
-import 'package:product/widgets/Add_Food.dart';
-import 'package:product/widgets/Add_Ingredients.dart';
-import 'package:product/widgets/Add_Self_Food.dart';
+import 'package:product/widgets/add_food.dart';
+import 'package:product/widgets/add_ingredients.dart';
+import 'package:product/widgets/add_self_food.dart';
 
 // 追加画面
 class Add extends StatefulWidget {
@@ -18,7 +18,7 @@ class AddState extends State<Add> {
   static const add_food = AddFood();
   static const add_ingredients = AddIngredients();
   // 変える
-  static const add_self_food = Add_Self_Food();
+  static const add_self_food = AddSelfFood();
    // ドロップダウンリストのアイテム
   final List<String> items = ['g', 'ml', 'cc', '個', '袋'];
   // クラスメンバとして初期化

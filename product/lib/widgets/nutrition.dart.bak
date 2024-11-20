@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 // 外部ライブラリ
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 // 自作widgets
-import 'package:product/widgets/record.dart';
+import 'package:product/widgets/Record.dart';
 import 'package:product/widgets/food_details.dart';
 
 class Nutrition extends StatefulWidget {
