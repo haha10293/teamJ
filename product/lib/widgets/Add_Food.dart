@@ -14,6 +14,7 @@ class Add_FoodState extends State<Add_Food> {
   double _progress = 0;
   List<int> rgbo = [63, 81, 181];
   double _opacity = 1.0;
+  String _img = "";
    // ドロップダウンリストのアイテム
   final List<String> items = ['g', 'ml', 'cc', '個', '袋'];
   // クラスメンバとして初期化
@@ -33,12 +34,12 @@ class Add_FoodState extends State<Add_Food> {
                   
               width: deviceWidth-50,
               child: TextField(
-                  keyboardType: TextInputType.number, // キーボードの種類を指定
+                  keyboardType: TextInputType.text, // キーボードの種類を指定
                   onChanged: (String value) {
-                    setState(() {
-                      // _BookName = value;
-                    });
-                  },
+                            setState(() {
+                              // _BookName = value;
+                            });
+                          },
                   // フォームの装飾
                   decoration: InputDecoration(
                     labelText: label,
@@ -72,82 +73,93 @@ class Add_FoodState extends State<Add_Food> {
             // 食品名
             textForm(1, 15, 1, 10, "食品名", "食品名を入力してください", "", deviceWidth),
             //-- 画像入力部分 --//
-            // カード
-            Card(
-              color: Colors.white, // Card自体の色
-              // 外側の余白
-              margin: const EdgeInsets.all(10),
-              // elevation: 10, // 影の離れ具合
-              shadowColor: Colors.black, // 影の色
-              // 枠線を変更できる
-              shape: const RoundedRectangleBorder(),
-              // 列方向
-              child: Padding(
-                padding: const EdgeInsets.only(top: 5, right: 15, bottom: 15, left: 10),            
-                child: Column(
+                SizedBox(
+                  height: 10,
+                ),  
+                Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     // 既にある画像からアップロードボタンと今カメラで撮影するボタンを横並びで置く
-                    const Text('食品の画像', style: optionStyle,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+
                         Center(child: 
                           Row(
                             children: [
                             ElevatedButton(
-                              onPressed: (){}, 
-                              style: ButtonStyle(
-                                shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)))
+                              onPressed: (){setState(() {_img = "https://life-media.co.jp/wp-content/uploads/2024/06/20240627_104856735_iOS.jpg";});}, 
+                              style: 
+                              ButtonStyle(
+                                shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))),
+                                minimumSize: WidgetStateProperty.all(Size(140, 70)), // ボタンの最小幅と高さ
                               ),
-                              child: const Column(children: [
-                                Padding(
-                                  padding: EdgeInsets.only(top: 8, right: 15, bottom: 5, left: 10),
-                                  child: Icon(Icons.photo_size_select_actual_rounded),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(top: 0, right: 15, bottom: 8, left: 10),
-                                  child: Text('写真を登録'),
-                                ),
+                              
+                              
+                              child:  Column(children: [
+                                Icon(Icons.photo_size_select_actual_rounded),
+                                // Padding(
+                                //   padding: EdgeInsets.only(top: 8, right: 15, bottom: 5, left: 10),
+                                //   child: Icon(Icons.photo_size_select_actual_rounded),
+                                // ),
+                                (_img == "")?Text('写真を登録'):Text("写真を変更"),
+                                // Padding(
+                                //   padding: EdgeInsets.only(top: 0, right: 15, bottom: 8, left: 10),
+                                //   child: (_img == "")?Text('写真を登録'):Text("写真を変更"),
+                                // ),
                               ],),
-                              )
+                            ),
+                            SizedBox(width: 30,),
+                            ElevatedButton(
+                              onPressed: (){}, 
+                              style:ButtonStyle(
+                                shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))),
+                                minimumSize: WidgetStateProperty.all(Size(140, 70)), // ボタンの最小幅と高さ
+                              ),
+                              child:const Column(children: [
+                              // Padding(
+                              //   padding: EdgeInsets.only(top: 8, right: 15, bottom: 5, left: 10),
+                              //   child: 
+                              // ),
+                                Icon(Icons.camera_alt),
+                              // Padding(
+                              //     padding: EdgeInsets.only(top: 0, right: 1, bottom: 8, left: 10),
+                              //     child: Text('栄養素スキャン'),
+                              //   ),
+                              Text('栄養素スキャン'),
+                              
+                              ],),
+                            )
                             ],
-                          )
-                        )
+                          ),
+                        ),
+                        
+                        
                       ],
-                    )
+                      
+                    ),
+                    
                   ],
-                ),
-              ),
             ),
+            (_img == "") ? Container() : Column(
+              children: [
+                SizedBox(height: 10),
+                Image(
+                  image: NetworkImage(_img),
+                  height: 150,
+                ),
+              ],
+            ),
+            SizedBox(height: 10,),
           //- 入力欄 -//
           Column(children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("栄養素", style: optionStyle,),
-                Padding(
-                  padding: EdgeInsets.only(top: 8, right: 0, bottom: 10, left: deviceWidth-350),
+                // const Text("栄養素", style: optionStyle,),
+                
                   // SizedBoxはサイズ変更できんくて入れたけど多分もっといいやつありそう
-                  child: SizedBox(
-                    height: 60, 
-                    width: 140,
-                    child: ElevatedButton(
-                      onPressed: (){}, 
-                      style:ButtonStyle(
-                        shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(borderRadius: BorderRadius.circular(6))),
-                      ),
-                      child:const Column(children: [
-                        Padding(
-                          padding: EdgeInsets.only(top: 8, right: 5, bottom: 5, left: 5),
-                          child: 
-                          Icon(Icons.camera_alt),
-                        ),
-                        Text('スキャン'),
-                      ],),
-                    )
-                  ),
-                ) 
+                  
               ],
             ),
             // 単位
