@@ -96,10 +96,10 @@ class RecordState extends State<Record> {
                           itemBuilder: (BuildContext context, int index) {
                             return ListTile(
                               leading: Image.network(
-                                'https://i.ytimg.com/vi/OGAGT-2w0ac/maxresdefault.jpg',
+                                'https://housefoods.jp/_sys/catimages/recipe/hfrecipe/items/00022588/0.485-310.jpeg',
                                 fit: BoxFit.contain,
                               ),
-                              tileColor: Colors.amber,
+                              tileColor: Colors.cyanAccent,
                               title: Container(
                                 decoration: BoxDecoration(
                                   border: Border(bottom: BorderSide()),
@@ -153,7 +153,7 @@ class RecordState extends State<Record> {
                           itemBuilder: (BuildContext context, int index) {
                             return ListTile(
                               leading: Image.network(
-                                'https://i.ytimg.com/vi/OGAGT-2w0ac/maxresdefault.jpg',
+                                'https://video.kurashiru.com/production/articles/6691048b-ce2c-4aa9-85ac-db07b83ddb46/wide_thumbnail_large.jpg?1714620224',
                                 fit: BoxFit.contain,
                               ),
                               tileColor: Colors.blueAccent,
@@ -161,7 +161,7 @@ class RecordState extends State<Record> {
                                 decoration: BoxDecoration(
                                   border: Border(bottom: BorderSide()),
                                 ),
-                                child: Text('カレーライス'),
+                                child: Text('きゅうり'),
                               ),
                               subtitle: Text(
                                 'カロリー：299kcal　たんぱく質：60g\n脂質：299kcal　炭水化物：60g\n塩分：299kcal',

@@ -181,7 +181,7 @@ class NutritionState extends State<Nutrition> {
                 ListTile(
                   // 前後画像
                   leading: 
-                    Image.network('https://i.ytimg.com/vi/OGAGT-2w0ac/maxresdefault.jpg', fit: BoxFit.contain),
+                    Image.network('https://housefoods.jp/_sys/catimages/recipe/hfrecipe/items/00022588/0.485-310.jpeg', fit: BoxFit.contain),
                     // 画像を決めた幅で表示する場合
                     // Container(
                     //   width: 90,
