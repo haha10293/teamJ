@@ -5,10 +5,10 @@ import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 // 自作widgets
-import 'package:product/widgets/Nutrition.dart';
-import 'package:product/screen/Graph.dart';
-import 'package:product/widgets/Settings.dart';
-import 'package:product/widgets/Add.dart';
+import 'package:product/screen/add.dart';
+import 'package:product/screen/graph.dart';
+import 'package:product/widgets/settings.dart';
+import 'package:product/screen/nutrition.dart';
 
 // カレンダーローカル対応（日本語）
 void main() =>  initializeDateFormatting().then((_) =>runApp(
