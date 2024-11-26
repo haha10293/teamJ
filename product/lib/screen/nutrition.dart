@@ -21,23 +21,25 @@ class NutritionState extends State<Nutrition> {
   static const foodDetails = FoodDetails();
   // テキストオプション
   static const TextStyle optionStyle = TextStyle(fontSize: 25, fontWeight: FontWeight.bold);
-  // 
+  // メーター関連
   double _progress = 0;
   List<int> rgbo = [63, 81, 181];
   double _opacity = 1.0;
-  // 曜日/今日の日付
+  // 曜日、今日の日付
   late int _weekDay = DateTime.now().weekday;
   DateTime _time = DateTime.now();
-
   // 現在の日付
   DateTime _focusedDay = DateTime.now();
   // 選択中の日付
   DateTime? _selectedDay;  
   // チェックボックスの選択
   bool _isChecked = false;
+  // リストデータ
+  List<Map<String, dynamic>> nutritionList = [{"name": "エネルギー","amount": 100},{"name": "タンパク質","amount": 30},{"name": "脂質","amount": 5},{"name": "炭水化物","amount": 40},{"name": "食塩","amount": 1},];
+  List<Map<String, dynamic>> foodList = [{"name": "カレーライス","image": "https://housefoods.jp/_sys/catimages/recipe/hfrecipe/items/00022588/0.485-310.jpeg"},{"name":"担々麵","image": "https://cdn.asagei.com/syokuraku/uploads/2020/01/20200112-newtantanmen01.jpg"},{"name": "イギー弁当","image": "https://img-global-jp.cpcdn.com/recipes/5769908/680x482cq70/%E3%82%B8%E3%83%A7%E3%82%B8%E3%83%A7-%E3%82%A4%E3%82%AE%E3%83%BC%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%A9%E5%BC%81-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.jpg"},];
 
   // 栄養素進捗メータ作成
-  Expanded nutritionProgress() {
+  Expanded nutritionProgress([String? name, int? amount]) {
     return 
       Expanded(
         child: Container(
@@ -47,10 +49,10 @@ class NutritionState extends State<Nutrition> {
               // 横軸の配置設定
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('data',style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
+                Text('$name',style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),),
                 SizedBox(height: 5),
                 // Container(margin: EdgeInsets.fromLTRB(0, 0, 10, 0), child: Align(child: Text('100g/158g'), alignment: Alignment.centerRight,)),
-                Align(child: Text('100g/158g', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),), alignment: Alignment.centerRight,),
+                Align(child: Text('$amount/158g', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),), alignment: Alignment.centerRight,),
                 SizedBox(height: 5),
 
                 Row(
@@ -105,19 +107,19 @@ class NutritionState extends State<Nutrition> {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              const Text('栄養Card', style: optionStyle,),
+              const Text('栄養表', style: optionStyle,),
               SizedBox(height: 10),
               Row(children: [
-              nutritionProgress(),
+                nutritionProgress(nutritionList[0]["name"], nutritionList[0]["amount"]),
               ],),
               SizedBox(height: 10),
               Row(
                 // 横軸の並び
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  nutritionProgress(),
+                  nutritionProgress(nutritionList[1]["name"], nutritionList[1]["amount"]),
                   SizedBox(width: 10,),
-                  nutritionProgress(),
+                  nutritionProgress(nutritionList[2]["name"], nutritionList[2]["amount"]),
                 ],
               ),
               SizedBox(height: 5,),
@@ -125,21 +127,21 @@ class NutritionState extends State<Nutrition> {
                 // 横軸の並び
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  nutritionProgress(),
+                  nutritionProgress(nutritionList[3]["name"], nutritionList[3]["amount"]),
                   SizedBox(width: 10,),
-                  nutritionProgress(),
+                  nutritionProgress(nutritionList[4]["name"], nutritionList[4]["amount"]),
                 ],
               ),
               SizedBox(height: 5,),
-              Row(
-                // 横軸の並び
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  nutritionProgress(),
-                  SizedBox(width: 10,),
-                  nutritionProgress(),
-                ],
-              ),
+              // Row(
+              //   // 横軸の並び
+              //   mainAxisAlignment: MainAxisAlignment.start,
+              //   children: [
+              //     nutritionProgress(),
+              //     SizedBox(width: 10,),
+              //     nutritionProgress(),
+              //   ],
+              // ),
             ],
           ),
           ),
@@ -151,7 +153,7 @@ class NutritionState extends State<Nutrition> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
             Text('食品項目'),
-            Text('12品目'),
+            Text('${foodList.length}品目'),
             // 記録ボタン
             ElevatedButton(onPressed: (){
               // 食品・食材記録画面へ遷移
@@ -181,20 +183,7 @@ class NutritionState extends State<Nutrition> {
                 ListTile(
                   // 前後画像
                   leading: 
-                    Image.network('https://housefoods.jp/_sys/catimages/recipe/hfrecipe/items/00022588/0.485-310.jpeg', fit: BoxFit.contain),
-                    // 画像を決めた幅で表示する場合
-                    // Container(
-                    //   width: 90,
-                    //   height: 60,
-                    //   child: Image.network('https://pbs.twimg.com/media/GEf7bkQacAA_mHV.jpg:large', fit: BoxFit.cover),
-                    // ),
-                  // trailing: Checkbox(
-                  //   value: _isChecked,
-                  //   onChanged: (value) {
-                  //     setState(() {
-                  //       _isChecked = value!; // チェックボックスに渡す値を更新する
-                  //     });
-                  //   }),
+                    Image.network(foodList[index]["image"], fit: BoxFit.contain),
                   // タイルの背景色
                   tileColor: Colors.amber,
                   // タイトル/サブ
@@ -202,7 +191,7 @@ class NutritionState extends State<Nutrition> {
                     decoration: BoxDecoration(
                       border: Border(bottom: BorderSide()),
                     ),
-                    child:Text('カレーライス')
+                    child:Text(foodList[index]["name"])
                     ),
                   subtitle: Text(
                     'カロリー：299kcal　たんぱく質：60g\n脂質：　　299kcal　炭水化物：　60g\n塩分：　　299kcal'

@@ -13,6 +13,11 @@ class RecordState extends State<Record> {
   final _searchForm = TextEditingController();
   static const TextStyle optionStyle = TextStyle(fontSize: 25, fontWeight: FontWeight.bold);
 
+  // リストデータ
+  List<Map<String, dynamic>> foodList = [{"name": "カレーライス","image": "https://housefoods.jp/_sys/catimages/recipe/hfrecipe/items/00022588/0.485-310.jpeg"},{"name":"担々麵","image": "https://cdn.asagei.com/syokuraku/uploads/2020/01/20200112-newtantanmen01.jpg"},{"name": "イギー弁当","image": "https://img-global-jp.cpcdn.com/recipes/5769908/680x482cq70/%E3%82%B8%E3%83%A7%E3%82%B8%E3%83%A7-%E3%82%A4%E3%82%AE%E3%83%BC%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%A9%E5%BC%81-%E3%83%AC%E3%82%B7%E3%83%94-%E3%83%A1%E3%82%A4%E3%83%B3-%E5%86%99%E7%9C%9F.jpg"},];
+  List<Map<String, dynamic>> ingredientList = [{"name": "きゅうり","image": "https://video.kurashiru.com/production/articles/6691048b-ce2c-4aa9-85ac-db07b83ddb46/wide_thumbnail_large.jpg?1714620224"},{"name":"トマト","image": "https://agri.mynavi.jp/wp-content/uploads/2018/03/8567_tomato2_hosei-1.jpg.webp"},{"name": "鶏むね肉","image": "https://media.delishkitchen.tv/article/541/v2rtg1dggg.jpeg?version=1615430934"},];
+
+
   TextFormField textFormField(IconData a, String b, TextEditingController c, String d, TextInputFormatter e, TextInputType f, [int g = 15]) {
     return TextFormField(
       controller: c,
@@ -56,6 +61,18 @@ class RecordState extends State<Record> {
             },
             icon: Icon(Icons.arrow_back),
           ),
+          actions: [
+            TextButton(
+              onPressed: (){
+                // データを更新処理
+
+                // 前の画面に戻る。
+                Navigator.pop(context);
+              }, 
+              child: 
+                Text('決定' ,style: TextStyle(color: Colors.blue),)
+            )
+          ],
         ),
         body: Column(
           children: [
@@ -96,15 +113,15 @@ class RecordState extends State<Record> {
                           itemBuilder: (BuildContext context, int index) {
                             return ListTile(
                               leading: Image.network(
-                                'https://housefoods.jp/_sys/catimages/recipe/hfrecipe/items/00022588/0.485-310.jpeg',
+                                foodList[index]["image"],
                                 fit: BoxFit.contain,
                               ),
-                              tileColor: Colors.cyanAccent,
+                              tileColor: Colors.amber,
                               title: Container(
                                 decoration: BoxDecoration(
                                   border: Border(bottom: BorderSide()),
                                 ),
-                                child: Text('カレーライス'),
+                                child: Text(foodList[index]["name"]),
                               ),
                               subtitle: Text(
                                 'カロリー：299kcal　たんぱく質：60g\n脂質：299kcal　炭水化物：60g\n塩分：299kcal',
@@ -153,7 +170,7 @@ class RecordState extends State<Record> {
                           itemBuilder: (BuildContext context, int index) {
                             return ListTile(
                               leading: Image.network(
-                                'https://video.kurashiru.com/production/articles/6691048b-ce2c-4aa9-85ac-db07b83ddb46/wide_thumbnail_large.jpg?1714620224',
+                                ingredientList[index]["image"],
                                 fit: BoxFit.contain,
                               ),
                               tileColor: Colors.blueAccent,
@@ -161,7 +178,7 @@ class RecordState extends State<Record> {
                                 decoration: BoxDecoration(
                                   border: Border(bottom: BorderSide()),
                                 ),
-                                child: Text('きゅうり'),
+                                child: Text(ingredientList[index]["name"]),
                               ),
                               subtitle: Text(
                                 'カロリー：299kcal　たんぱく質：60g\n脂質：299kcal　炭水化物：60g\n塩分：299kcal',

@@ -22,6 +22,7 @@ class AddSelfFoodState extends State<AddSelfFood> {
   String? selectedValue = '人前'; 
    // 食品記録画面
   static const record = Record();
+  List<Map<String, dynamic>> ingredientList = [{"name": "きゅうり","image": "https://video.kurashiru.com/production/articles/6691048b-ce2c-4aa9-85ac-db07b83ddb46/wide_thumbnail_large.jpg?1714620224"},{"name":"トマト","image": "https://agri.mynavi.jp/wp-content/uploads/2018/03/8567_tomato2_hosei-1.jpg.webp"},{"name": "鶏むね肉","image": "https://media.delishkitchen.tv/article/541/v2rtg1dggg.jpeg?version=1615430934"},];
 
   @override
   Widget build(BuildContext context) {
@@ -283,7 +284,7 @@ class AddSelfFoodState extends State<AddSelfFood> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
             Text('食材項目'),
-            Text('12品目'),
+            Text('${ingredientList.length}品目'),
             // 記録ボタン
             ElevatedButton(onPressed: (){
               // 食品記録画面へ遷移
@@ -316,14 +317,7 @@ class AddSelfFoodState extends State<AddSelfFood> {
                   // 前後画像
                   // leading: Icon(Icons.abc_rounded),
                   leading: 
-                    Image.network('https://video.kurashiru.com/production/articles/6691048b-ce2c-4aa9-85ac-db07b83ddb46/wide_thumbnail_large.jpg?1714620224', fit: BoxFit.contain),
-                    // 画像を決めた幅で表示する場合
-                    // Container(
-                    //   width: 90,
-                    //   height: 60,
-                    //   child: Image.network('https://pbs.twimg.com/media/GEf7bkQacAA_mHV.jpg:large', fit: BoxFit.cover),
-                    // ),
-                  // trailing: Icon(Icons.list),
+                    Image.network(ingredientList[index]["image"], fit: BoxFit.contain),
                   // タイルの背景色
                   tileColor: Colors.amber,
                   // タイトル/サブ
@@ -331,7 +325,7 @@ class AddSelfFoodState extends State<AddSelfFood> {
                     decoration: BoxDecoration(
                       border: Border(bottom: BorderSide()),
                     ),
-                    child:Text('きゅうり')
+                    child:Text(ingredientList[index]["name"])
                     ),
                   subtitle: Text(
                     'カロリー：299kcal　たんぱく質：60g\n脂質：　　299kcal　炭水化物：　60g\n塩分：　　299kcal'
