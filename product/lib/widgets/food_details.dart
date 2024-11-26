@@ -77,75 +77,10 @@ class FoodDetailsState extends State<FoodDetails> {
         ),
         // コンテンツ
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-            color: Theme.of(context).colorScheme.inversePrimary,
-            child: 
-            Form(
-              key: _formKey,
-              child: 
-              // 入力欄
-              textFormField(Icons.search,'検索語を入力してください。', _searchForm, '検索語', FilteringTextInputFormatter.deny(''), TextInputType.text, ),
-            )),
-            ListView.separated(
-              shrinkWrap: true, 
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: 3,
-              separatorBuilder: (context, index) =>  Divider(height: 0.5,),
-              itemBuilder: (BuildContext context, int index) {
-                return
-                    ListTile(
-                      leading: 
-                        Image.network('https://i.ytimg.com/vi/OGAGT-2w0ac/maxresdefault.jpg', fit: BoxFit.contain),
-                      tileColor: Colors.amber,
-                      title:Container(
-                        decoration: BoxDecoration(
-                          border: Border(bottom: BorderSide()),
-                        ),
-                        child:Text('カレーライス')
-                        ),
-                      subtitle: Text(
-                        'カロリー：299kcal　たんぱく質：60g\n脂質：　　299kcal　炭水化物：　60g\n塩分：　　299kcal'
-                        ),
-                      // タップされたときの処理
-                      onTap: () {
-                        
-                      },
-                      // 一定時間タップしたとき
-                      onLongPress: () {
-                        // ダイアログを表示
-                        showDialog<void>(
-                          context: context,
-                          builder: (_) {
-                            return AlertDialog(
-                              title: const Text('データを消してしまってもいいですか？'),
-                              content: const Text('内容'),
-                              actions: <Widget>[
-                                GestureDetector(
-                                  child: const Text('いいえ'),
-                                  // 元の画面に戻る
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                                GestureDetector(
-                                  child: const Text('はい'),
-                                  // その日の食品一覧から削除して元の画面に戻る
-                                  onTap: () {
-                                    // 削除処理（追加予定）
-
-                                    // 元画面に戻る
-                                    Navigator.pop(context);
-                                  },
-                                )
-                              ],
-                            );
-                          }
-                        );
-                      },
-                  );
-              },
-            ),
+            Center(child: 
+            Text('食品詳細画面', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),))
           ],
         )
       );
