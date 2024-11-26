@@ -32,7 +32,9 @@ class NutritionState extends State<Nutrition> {
   // 現在の日付
   DateTime _focusedDay = DateTime.now();
   // 選択中の日付
-  DateTime? _selectedDay;   
+  DateTime? _selectedDay;  
+  // チェックボックスの選択
+  bool _isChecked = false;
 
   // 栄養素進捗メータ作成
   Expanded nutritionProgress() {
@@ -155,6 +157,7 @@ class NutritionState extends State<Nutrition> {
               // 食品・食材記録画面へ遷移
               Navigator.push(context, MaterialPageRoute(builder: (context) => record));
               //   setState(() {
+
                 
               // }
             // );
@@ -185,7 +188,13 @@ class NutritionState extends State<Nutrition> {
                     //   height: 60,
                     //   child: Image.network('https://pbs.twimg.com/media/GEf7bkQacAA_mHV.jpg:large', fit: BoxFit.cover),
                     // ),
-                  // trailing: Icon(Icons.list),
+                  // trailing: Checkbox(
+                  //   value: _isChecked,
+                  //   onChanged: (value) {
+                  //     setState(() {
+                  //       _isChecked = value!; // チェックボックスに渡す値を更新する
+                  //     });
+                  //   }),
                   // タイルの背景色
                   tileColor: Colors.amber,
                   // タイトル/サブ
