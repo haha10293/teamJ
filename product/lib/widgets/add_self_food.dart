@@ -328,7 +328,7 @@ class AddSelfFoodState extends State<AddSelfFood> {
                     child:Text(ingredientList[index]["name"])
                     ),
                   subtitle: Text(
-                    'カロリー：299kcal　たんぱく質：60g\n脂質：　　299kcal　炭水化物：　60g\n塩分：　　299kcal'
+                    'カロリー：299kcalたんぱく質：60g\n脂質：299kcal炭水化物：60g\n塩分：299kcal'
                     ),
                   // タップされたときの処理
                   onTap: () {
